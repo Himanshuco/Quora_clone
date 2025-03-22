@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K-Study</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    .button-link-detail{
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #FF5722;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 6px;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        }
+
+        .button-link-detail:hover {
+            background-color: #E64A19;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .button-link-detail:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.6);
+        }
+
+        .delete-button {
+        background-color: #e74c3c;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      .delete-button:hover {
+        background-color: #c0392b;
+        transform: scale(1.05);
+      }
+
+      .delete-button:focus {
+        outline: none;
+      }
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a class="aa" href="#">KStudy</a>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li><a class="aa" href="#">Home</a></li>
+          <li><a class="aa" href="#">Spaces</a></li>
+          <li><a class="aa" href="#">Questions</a></li>
+          <li><a class="aa" href="#">Notifications</a></li>
+          <li><a class="aa" href="#">Profile</a></li>
+        </ul>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search...">
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <h1>Posts</h1>
+      <% for(let post of posts){ %>
+        <div class="post">
+          <h3 class="user">@ <%= post.username %></h3>
+          <h4 class="content"><%= post.content %></h4>
+          <br>
+          <a class="button-link-detail" href="http://localhost:8080/posts/<%= post.id %>">See in detail</a>
+          <a class="button-link-detail" href="http://localhost:8080/posts/<%= post.id %>/edit">Edit </a>
+          <br>
+          <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
+        </div>
+      <%} %>
+
+      <br>
+      <br>
+      <a class="button-link" href="http://localhost:8080/posts/new">Create new Post</a>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      All Right Reserved @2005
+  </footer>
+
+</body>
+</html>
